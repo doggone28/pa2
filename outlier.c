@@ -18,7 +18,7 @@ typedef struct wordFreq{
 } wordFreq;
 
 
-//testing if third committing workings.
+
 /*
     Will check if the file name ends witha .txt to be scanned
     Will return 0 if false and 1 if true
@@ -103,6 +103,39 @@ void searchDirectory(const char *dirName){
     closedir(dir); 
 }
 
+
+wordFreq *hashTable[1000];
+int totalWords = 0; 
+
+unsigned int hash(char *word){
+    unsigned int hash = 0; 
+    while(*word){
+        hash = (hash*31) + *word;
+        word++;
+    }
+    return hash % 1000;
+}
+
+void insertWord(char *word){
+    unsigned int index = hash(word);
+    wordFreq *entry = hashTable[index];
+
+    while(entry){
+        if(strcmp(entry->word, word) == 0){
+            entry->count++;
+            totalWords++;
+            return;
+        }
+        entry = entry -> next;
+    }
+
+    wordFreq *newEntry = malloc(sizeof(wordFreq));
+    if(!newEntry){
+        perror("allocation failed!");
+        return 1;
+    }
+    
+}
 /*
 Our program will take in aruguements, we will use stat to determine whether they are of dir or regular files
 Once we figure out the type 
