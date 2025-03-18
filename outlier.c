@@ -9,6 +9,9 @@
 #include <dirent.h> //Holds open dir etc
 #include <unistd.h> //Holds open files etc
 
+#define BUFFER 4096;
+
+
 /*
     Will check if the file name ends witha .txt to be scanned
     Will return 0 if false and 1 if true
