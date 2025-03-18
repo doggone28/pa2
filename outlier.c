@@ -17,6 +17,8 @@ typedef struct wordFreq{
     struct wordFreq *next;
 } wordFreq;
 
+
+//testing if third committing workings.
 /*
     Will check if the file name ends witha .txt to be scanned
     Will return 0 if false and 1 if true
