@@ -11,6 +11,11 @@
 
 #define BUFFER 4096;
 
+typedef struct wordFreq{
+    char *word;
+    int count;
+    struct wordFreq *next;
+} wordFreq;
 
 /*
     Will check if the file name ends witha .txt to be scanned
