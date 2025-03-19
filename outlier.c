@@ -121,11 +121,17 @@ void insertWord(char *word){
     wordFreq *entry = hashTable[index];
 
     while(entry){
+
+        //case where it is already there
         if(strcmp(entry->word, word) == 0){
             entry->count++;
             totalWords++;
             return;
+
+            
         }
+
+        //case where it is not
         entry = entry -> next;
     }
 
@@ -134,8 +140,14 @@ void insertWord(char *word){
         perror("allocation failed!");
         return 1;
     }
-    
+    newEntry->word = strdup(word);
+    newEntry->count = 1;
+    newEntry->next = hashTable[index];
+    hashTable[index] = newEntry;
 }
+
+    
+
 /*
 Our program will take in aruguements, we will use stat to determine whether they are of dir or regular files
 Once we figure out the type 
